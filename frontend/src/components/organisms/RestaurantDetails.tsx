@@ -7,7 +7,6 @@ import { inputState } from "../../store/InputState";
 // GraphQL
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
-import { RestaurantCard } from "../molecules/RestaurantCard";
 import { Row } from "reactstrap";
 import { DishCard } from "../molecules/DishCard";
 const GET_RESTAURANT_DISHES = gql`
