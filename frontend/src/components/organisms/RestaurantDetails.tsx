@@ -1,17 +1,17 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { useRouter } from "next/router";
+import { Row } from "reactstrap";
 
 import { inputState } from "../../store/InputState";
+import { DishCard } from "../molecules/DishCard";
 
 // GraphQL
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
-import { Row } from "reactstrap";
-import { DishCard } from "../molecules/DishCard";
 const GET_RESTAURANT_DISHES = gql`
   query ($id: ID!) {
-    #$idが必須
+    #１　”$idが必須”　の明示
     restaurant(id: $id) {
       # restaurant（１）対　dish(他)
       #$idを用いてレストラン特定 / id = router.query.id
@@ -61,7 +61,7 @@ export const RestaurantDetails = () => {
   });
 
   // Recoil
-  const inputText: any = useRecoilValue(inputState);
+  const inputText = useRecoilValue(inputState);
 
   // Console
   console.log(data);
@@ -69,7 +69,7 @@ export const RestaurantDetails = () => {
   // Return
   if (error) return <h2>レストランは見つかりませんでした</h2>;
   if (loading) return <h2>読み込み中です。</h2>;
-  if (data.restaurant && data.restaurant.dishes.length) {
+  if (data.restaurant.dishes && data.restaurant.dishes.length) {
     // dataの中の特定したレストラン
     const { restaurant } = data;
     return (

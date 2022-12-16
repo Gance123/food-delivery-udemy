@@ -24,9 +24,7 @@
     "strapi-plugin-users-permissions": "3.4.0",
     "strapi-utils": "3.4.0"
   },
-  "author": {
-    "name": "A Strapi developer"
-  },
+  "author": "A Strapi developer",
   "strapi": {
     "uuid": "3934e783-4064-40cc-9283-bf9084fc992c"
   },
@@ -34,5 +32,6 @@
     "node": ">=10.16.0 <=14.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "main": "index.js"
 }

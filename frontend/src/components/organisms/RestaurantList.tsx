@@ -38,7 +38,7 @@ export const RestaurantList = () => {
   if (error) return <h2>レストランは見つかりませんでした</h2>;
   if (loading) return <h2>読み込み中です。</h2>;
   if (data.restaurants && data.restaurants.length) {
-    // 検索機能
+    // 検索機能 with Recoil
     const searchQuery = data.restaurants.filter((res: Res) =>
       res.name.toLowerCase().includes(inputText)
     );

@@ -5,9 +5,11 @@ import { useSetRecoilState, SetterOrUpdater } from "recoil";
 import { inputState } from "../../store/InputState";
 
 export const SearchInput = () => {
+  // Recoil
   const setInputText: SetterOrUpdater<{ inputText: string }> | any =
     useSetRecoilState(inputState);
 
+  // UseEffect
   React.useEffect(() => {
     setInputText("r");
   }, []);

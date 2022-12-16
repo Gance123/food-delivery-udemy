@@ -1,4 +1,4 @@
-import { userInfoState } from "../../store/UserInfo";
+import { userLoginInfoState } from "../../store/UserLoginInfo";
 import {
   Button,
   Col,
@@ -9,50 +9,45 @@ import {
   Label,
   Row,
 } from "reactstrap";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 
 // Type
 type Props = {
   onClick: () => void;
 };
 
-export const RegisterCard = (props: Props) => {
+export const LoginCard = (props: Props) => {
   // Props
   const { onClick } = props;
 
   // Recoil
-  const [userInfo, setUserInfo] = useRecoilState(userInfoState);
+  const [userLoginInfo, setUserLoginInfo] = useRecoilState(userLoginInfoState);
+
+  // OnChange
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUserLoginInfo({ ...userLoginInfo, [e.target.name]: e.target.value });
+  };
+
+  // Console
+  // console.log(userLoginInfo);
 
   return (
     <Container>
       <Row>
         <Col>
           <div className="paper">
-            <h2>ユーザー登録</h2>
+            <h2>ログイン</h2>
           </div>
           <section className="wrapper">
             <Form>
               <fieldset>
                 <FormGroup>
-                  <Label>ユーザー名 :</Label>
-                  <Input
-                    type="text"
-                    name="username"
-                    style={{ height: 50, fontSize: "1.2rem" }}
-                    onChange={(e) =>
-                      setUserInfo({ ...userInfo, username: e.target.value })
-                    }
-                  />
-                </FormGroup>
-                <FormGroup>
                   <Label>メールアドレス :</Label>
                   <Input
                     type="email"
-                    name="email"
+                    name="identifier"
                     style={{ height: 50, fontSize: "1.2rem" }}
-                    onChange={(e) =>
-                      setUserInfo({ ...userInfo, email: e.target.value })
-                    }
+                    onChange={(e) => handleOnChange(e)}
                   />
                 </FormGroup>
                 <FormGroup>
@@ -61,9 +56,7 @@ export const RegisterCard = (props: Props) => {
                     type="password"
                     name="password"
                     style={{ height: 50, fontSize: "1.2rem" }}
-                    onChange={(e) =>
-                      setUserInfo({ ...userInfo, password: e.target.value })
-                    }
+                    onChange={(e) => handleOnChange(e)}
                   />
                 </FormGroup>
                 <span>
@@ -76,7 +69,7 @@ export const RegisterCard = (props: Props) => {
                   style={{ float: "right", width: 120 }}
                   onClick={onClick}
                 >
-                  登録
+                  ログイン
                 </Button>
               </fieldset>
             </Form>
