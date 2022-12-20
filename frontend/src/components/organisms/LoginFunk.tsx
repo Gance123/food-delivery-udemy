@@ -10,7 +10,7 @@ export const LoginFunk = () => {
   const userLoginInfo = useRecoilValue(userLoginInfoState);
   const [userAuth, setUserAuth] = useRecoilState(userAuthState);
 
-  // onClick
+  // ログインボタン
   const handleLogin = () => {
     login(userLoginInfo.identifier, userLoginInfo.password)
       .then((res) => {

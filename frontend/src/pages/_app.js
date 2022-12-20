@@ -1,30 +1,30 @@
-import React from "react";
-import App from "next/app";
+import React, { useEffect } from "react";
 import Head from "next/head";
+import Cookies from "js-cookie";
 import withData from "../../lib/apollo";
 
-import { RecoilRoot } from "recoil";
+import { RecoilRoot, useSetRecoilState } from "recoil";
+import { userAuthState } from "../store/UserAuthState";
 
-class MyApp extends App {
-  render() {
-    const { Component, pageProps } = this.props;
-    return (
-      <>
-        <Head>
-          <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-          />
-        </Head>
-        <RecoilRoot>
-          <Component {...pageProps} />
-        </RecoilRoot>
-      </>
-    );
-  }
+function App({ Component, pageProps }) {
+  
+
+  return (
+    <>
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        />
+      </Head>
+      <RecoilRoot>
+        <Component {...pageProps} />
+      </RecoilRoot>
+    </>
+  );
 }
 
-export default withData(MyApp);
+export default withData(App);
 // MyApp ... frontendのすべてのコンポーネント
 // withData(config)ですべてのコンポーネントでapolloのサーバを利用できる
 // ・・・どこでもデータ取得が可能！！！

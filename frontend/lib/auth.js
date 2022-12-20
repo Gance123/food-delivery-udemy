@@ -34,6 +34,7 @@ export const login = (identifier, password) => {
       .then((res) => {
         Cookie.set("token", res.data.jwt, { expires: 7 });
         resolve(res);
+        window.location.href = "/";
       })
       .catch((err) => {
         console.log(err);

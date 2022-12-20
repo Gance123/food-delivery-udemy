@@ -3,7 +3,7 @@ import App from "next/app";
 import Head from "next/head";
 import Link from "next/link";
 import { Nav, NavItem, Container } from "reactstrap";
-import { useRecoilValue } from "recoil";
+import { RecoilRoot, useRecoilValue } from "recoil";
 import { userAuthState } from "../store/UserAuthState";
 
 export const Layout = ({ children }) => {

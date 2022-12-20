@@ -29,7 +29,6 @@ export const LoginCard = (props: Props) => {
   };
 
   // Console
-  // console.log(userLoginInfo);
 
   return (
     <Container>
