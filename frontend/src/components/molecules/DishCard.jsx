@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import AppContext from "../../context/AppContext";
 import { Button, Card, CardBody, CardImg, CardTitle, Col } from "reactstrap";
+import { useAddItem } from "../hooks/useManageItem";
 
 export const DishCard = (props) => {
   // Props
