@@ -2,16 +2,21 @@ import Head from "next/head";
 import { RecoilRoot } from "recoil";
 
 import withData from "../../lib/apollo";
+import { useManageItem } from "../components/hooks/useManageItem";
 import AppContext from "../context/AppContext";
-import { useAddItem } from "../components/hooks/addItem";
 
 function App({ Component, pageProps }) {
   // hooks
-  const { addItem, state, setState } = useAddItem();
+  const { addItem, removeItem, state, setState } = useManageItem();
 
   return (
     <AppContext.Provider
-      value={{ addItem: addItem, cart: state.cart, setState: setState }}
+      value={{
+        addItem: addItem,
+        removeItem: removeItem,
+        cart: state.cart,
+        setState: setState,
+      }}
     >
       <Head>
         <link

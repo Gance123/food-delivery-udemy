@@ -2,11 +2,12 @@ import Link from "next/link";
 import { Badge, Button, Card, CardBody, CardTitle } from "reactstrap";
 import { useContext } from "react";
 import AppContext from "../../context/AppContext";
+import { useAddItem } from "../hooks/useManageItem";
 
 export const ShopCart = () => {
   // Context
   const appContext = useContext(AppContext);
-  const { cart } = appContext;
+  const { cart, addItem, removeItem } = appContext;
 
   return (
     <div>
@@ -46,7 +47,7 @@ export const ShopCart = () => {
                               marginLeft: 10,
                             }}
                             color="link"
-                            onClick={() => appContext.addItem(item)}
+                            onClick={() => addItem(item)}
                           >
                             +
                           </Button>
@@ -59,6 +60,7 @@ export const ShopCart = () => {
                               marginLeft: 10,
                             }}
                             color="link"
+                            onClick={() => removeItem(item)}
                           >
                             -
                           </Button>
