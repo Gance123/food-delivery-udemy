@@ -1,9 +1,14 @@
-import Link from "next/link";
-import React from "react";
+import { useContext } from "react";
+import AppContext from "../../context/AppContext";
 import { Button, Card, CardBody, CardImg, CardTitle, Col } from "reactstrap";
 
 export const DishCard = (props) => {
-  const { id, name, description, image } = props;
+  // Props
+  const { name, description, image, dish } = props;
+  // Context
+  const appContext = useContext(AppContext);
+  const { addItem } = appContext;
+  console.log(dish);
 
   return (
     <Col xs="6" sm="4" style={{ padding: 0 }}>
@@ -18,7 +23,7 @@ export const DishCard = (props) => {
           <CardTitle>{description}</CardTitle>
         </CardBody>
         <div className="card-footer">
-          <Button outline color="primary">
+          <Button outline color="primary" onClick={() => {}}>
             <p>+カートに入れる</p>
           </Button>
         </div>

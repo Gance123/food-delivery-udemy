@@ -1,17 +1,14 @@
-import React from "react";
-import { useRecoilValue } from "recoil";
+import { Col, Row } from "reactstrap";
 import { useRouter } from "next/router";
-import { Row } from "reactstrap";
 
-import { inputState } from "../../store/InputState";
 import { DishCard } from "../molecules/DishCard";
-
+import { ShopCart } from "../molecules/ShopCart";
 // GraphQL
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
 const GET_RESTAURANT_DISHES = gql`
   query ($id: ID!) {
-    #１　”$idが必須”　の明示
+    # ”$idが必須”　の明示
     restaurant(id: $id) {
       # restaurant（１）対　dish(他)
       #$idを用いてレストラン特定 / id = router.query.id
@@ -30,25 +27,6 @@ const GET_RESTAURANT_DISHES = gql`
   }
 `;
 
-// Type
-type DetailInfo = {
-  restaurant: {
-    id: string;
-    name: string;
-    dishes: [
-      {
-        id: string;
-        name: string;
-        description: string;
-        price: number;
-        image: {
-          url: string;
-        };
-      }
-    ];
-  };
-};
-
 // コンポーネント
 export const RestaurantDetails = () => {
   // GraphQL
@@ -60,31 +38,30 @@ export const RestaurantDetails = () => {
     // クリック → URLに飛ぶ → URLの?id=の後にに続く値をもとにレストラン特定して表示
   });
 
-  // Recoil
-  const inputText = useRecoilValue(inputState);
-
-  // Console
-  console.log(data);
-
   // Return
   if (error) return <h2>レストランは見つかりませんでした</h2>;
   if (loading) return <h2>読み込み中です。</h2>;
   if (data.restaurant.dishes && data.restaurant.dishes.length) {
-    // dataの中の特定したレストラン
     const { restaurant } = data;
     return (
       <>
         <h1>{restaurant.name}</h1>
         <Row>
-          {restaurant.dishes.map((res) => (
+          {restaurant.dishes.map((dish: any) => (
             <DishCard
-              key={res.id}
-              id={res.id}
-              name={res.name}
-              description={res.description}
-              image={res.image.url}
+              key={dish.id}
+              id={dish.id}
+              name={dish.name}
+              description={dish.description}
+              image={dish.image.url}
+              dish={dish}
             />
           ))}
+          <div>
+            <Col>
+              <ShopCart />
+            </Col>
+          </div>
         </Row>
       </>
     );

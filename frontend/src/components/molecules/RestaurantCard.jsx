@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Card, CardBody, CardImg, CardTitle, Col } from "reactstrap";
 
 export const RestaurantCard = (props) => {
+  // Props
   const { id, name, description, image } = props;
 
   return (

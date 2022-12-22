@@ -1,4 +1,3 @@
-import React from "react";
 import { Row } from "reactstrap";
 import { useRecoilValue } from "recoil";
 
@@ -31,7 +30,7 @@ export const RestaurantList = () => {
   // GraphQL
   const { loading, error, data } = useQuery(query);
 
-  // Recoil
+  // Recoil ・・ SearchInput
   const inputText: any = useRecoilValue(inputState);
 
   // Return
