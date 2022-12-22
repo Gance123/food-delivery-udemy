@@ -7,7 +7,6 @@ export const ShopCart = () => {
   // Context
   const appContext = useContext(AppContext);
   const { cart } = appContext;
-  console.log(cart);
 
   return (
     <div>

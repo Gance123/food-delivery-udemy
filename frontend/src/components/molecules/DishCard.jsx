@@ -8,7 +8,6 @@ export const DishCard = (props) => {
   // Context
   const appContext = useContext(AppContext);
   const { addItem } = appContext;
-  console.log(dish);
 
   return (
     <Col xs="6" sm="4" style={{ padding: 0 }}>
@@ -23,7 +22,7 @@ export const DishCard = (props) => {
           <CardTitle>{description}</CardTitle>
         </CardBody>
         <div className="card-footer">
-          <Button outline color="primary" onClick={() => {}}>
+          <Button outline color="primary" onClick={() => addItem(dish)}>
             <p>+カートに入れる</p>
           </Button>
         </div>
