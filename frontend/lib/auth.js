@@ -15,6 +15,7 @@ export const registerUser = (username, email, password) => {
       .then((res) => {
         Cookie.set("token", res.data.jwt, { expires: 7 });
         resolve(res.data);
+        window.location.href = "/";
       })
       .catch((err) => {
         console.log(err);

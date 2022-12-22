@@ -1,16 +1,18 @@
-import React, { useEffect } from "react";
 import Head from "next/head";
-import Cookies from "js-cookie";
-import withData from "../../lib/apollo";
+import { RecoilRoot } from "recoil";
 
-import { RecoilRoot, useSetRecoilState } from "recoil";
-import { userAuthState } from "../store/UserAuthState";
+import withData from "../../lib/apollo";
+import AppContext from "../context/AppContext";
+import { useAddItem } from "../components/hooks/addItem";
 
 function App({ Component, pageProps }) {
-  
+  // hooks
+  const { addItem, state, setState } = useAddItem();
 
   return (
-    <>
+    <AppContext.Provider
+      value={{ addItem: addItem, cart: state.cart, setState: setState }}
+    >
       <Head>
         <link
           rel="stylesheet"
@@ -20,7 +22,7 @@ function App({ Component, pageProps }) {
       <RecoilRoot>
         <Component {...pageProps} />
       </RecoilRoot>
-    </>
+    </AppContext.Provider>
   );
 }
 

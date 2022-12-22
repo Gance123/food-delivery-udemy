@@ -1,5 +1,5 @@
 import React from "react";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { login } from "../../../lib/auth";
 import { userAuthState } from "../../store/UserAuthState";
 import { userLoginInfoState } from "../../store/UserLoginInfo";
@@ -8,9 +8,9 @@ import { LoginCard } from "../molecules/LoginCard";
 export const LoginFunk = () => {
   // Recoil
   const userLoginInfo = useRecoilValue(userLoginInfoState);
-  const [userAuth, setUserAuth] = useRecoilState(userAuthState);
+  const setUserAuth = useSetRecoilState(userAuthState);
 
-  // ログインボタン
+  // ログインボタン from "lib/auth.js"
   const handleLogin = () => {
     login(userLoginInfo.identifier, userLoginInfo.password)
       .then((res) => {
@@ -21,8 +21,6 @@ export const LoginFunk = () => {
         console.log(err);
       });
   };
-
-  console.log(userAuth);
 
   return <LoginCard onClick={handleLogin} />;
 };

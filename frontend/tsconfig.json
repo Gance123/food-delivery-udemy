@@ -25,5 +25,5 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/layout/Layout.jsx", "src/components/molecules/RestaurantCard.jsx", "src/components/organisms/RestaurantList.tsx", "src/components/molecules/SearchInput.tsx", "src/components/molecules/DishCard.jsx", "src/pages/_app.js"  ]
+, "src/layout/Layout.jsx", "src/components/molecules/RestaurantCard.jsx", "src/components/organisms/RestaurantList.tsx", "src/components/molecules/SearchInput.tsx", "src/components/molecules/DishCard.jsx", "src/pages/_app.js", "src/components/molecules/ShopCart.jsx", "src/components/organisms/RestaurantDetails.tsx"  ]
 }
