@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Cookies from "js-cookie";
 
 export const useManageItem = () => {
   const [state, setState] = useState({
@@ -25,7 +26,7 @@ export const useManageItem = () => {
           total: state.cart.total + item.price,
         },
       });
-      () => Cookies.set("cart", state.cart.items);
+      Cookies.set("cart", state.cart.items);
     }
     // 既存の商品を追加する場合
     else {
@@ -39,7 +40,7 @@ export const useManageItem = () => {
           total: state.cart.total + item.price,
         },
       });
-      () => Cookies.set("cart", state.cart.items);
+      Cookies.set("cart", state.cart.items);
     }
   };
 

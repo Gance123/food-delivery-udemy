@@ -10,10 +10,11 @@ export const Layout = ({ children }) => {
   // // Recoil
   const [userAuth, setUserAuth] = useRecoilState(userAuthState);
 
-  // useEffect
+  // useEffect ログイン + カート情報
   useEffect(() => {
     // すでにCookie情報が残っているか確認する
     const token = Cookies.get("token"); //tokenの中にはjwtが入っている
+    
     if (token) {
       fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {
         headers: {
@@ -26,7 +27,7 @@ export const Layout = ({ children }) => {
           return null;
         }
         const user = await res.json();
-        setUserAuth(user); //ログイン
+        setUserAuth(user);
       });
     }
   }, []);

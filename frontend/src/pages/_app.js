@@ -1,4 +1,6 @@
 import Head from "next/head";
+import Cookies from "js-cookie";
+import { useEffect } from "react";
 import { RecoilRoot } from "recoil";
 
 import withData from "../../lib/apollo";
@@ -9,13 +11,27 @@ function App({ Component, pageProps }) {
   // hooks
   const { addItem, removeItem, state, setState } = useManageItem();
 
+  // useEffect カート状態
+  useEffect(() => {
+    const cart = Cookies.get("cart");
+    if (cart !== undefined) {
+      JSON.parse(cart).forEach((item) => {
+        setState({
+          cart: {
+            items: JSON.parse(cart),
+            total: (state.cart.total += item.price * item.quantity),
+          },
+        });
+      });
+    }
+  }, []);
+
   return (
     <AppContext.Provider
       value={{
         addItem: addItem,
         removeItem: removeItem,
         cart: state.cart,
-        setState: setState,
       }}
     >
       <Head>
